@@ -1,0 +1,4 @@
+
+include ':cache', ':remote', ':data', ':domain', ':presentation', ':app'
+
+rootProject.name = "movie-clean-architecture"
