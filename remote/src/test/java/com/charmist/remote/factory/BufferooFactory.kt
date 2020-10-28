@@ -1,6 +1,6 @@
 package com.charmist.remote.factory
 
-import com.charmist.remote.BufferooService
+import com.charmist.remote.MovieService
 import com.charmist.remote.factory.DataFactory.Factory.randomUuid
 import com.charmist.remote.model.BufferooModel
 
@@ -9,8 +9,8 @@ class BufferooFactory {
 
     companion object Factory {
 
-        fun makeBufferooResponse(): BufferooService.BufferooResponse {
-            val bufferooResponse = BufferooService.BufferooResponse()
+        fun makeBufferooResponse(): MovieService.BufferooResponse {
+            val bufferooResponse = MovieService.BufferooResponse()
             bufferooResponse.team = makeBufferooModelList(5)
             return bufferooResponse
         }

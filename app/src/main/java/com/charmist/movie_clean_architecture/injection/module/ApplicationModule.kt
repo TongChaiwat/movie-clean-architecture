@@ -17,9 +17,9 @@ import com.charmist.domain.repository.BufferooRepository
 import com.charmist.movie_clean_architecture.BuildConfig
 import com.charmist.movie_clean_architecture.UiThread
 import com.charmist.movie_clean_architecture.injection.scopes.PerApplication
-import com.charmist.remote.BufferooRemoteImpl
-import com.charmist.remote.BufferooService
-import com.charmist.remote.BufferooServiceFactory
+import com.charmist.remote.MovieRemoteImpl
+import com.charmist.remote.MovieService
+import com.charmist.remote.MovieServiceFactory
 import dagger.Module
 import dagger.Provides
 import org.buffer.android.boilerplate.cache.PreferencesHelper
@@ -63,10 +63,10 @@ open class ApplicationModule {
     @Provides
     @PerApplication
     internal fun provideBufferooRemote(
-        service: BufferooService,
-        factory: com.charmist.remote.mapper.BufferooEntityMapper
+        service: MovieService,
+        factory: com.charmist.remote.mapper.MovieEntityMapper
     ): BufferooRemote {
-        return BufferooRemoteImpl(service, factory)
+        return MovieRemoteImpl(service, factory)
     }
 
     @Provides
@@ -83,7 +83,7 @@ open class ApplicationModule {
 
     @Provides
     @PerApplication
-    internal fun provideBufferooService(): BufferooService {
-        return BufferooServiceFactory.makeBuffeoorService(BuildConfig.DEBUG)
+    internal fun provideBufferooService(): MovieService {
+        return MovieServiceFactory.makeBuffeoorService(BuildConfig.DEBUG)
     }
 }

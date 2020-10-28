@@ -6,7 +6,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface BufferooService {
+interface MovieService {
 
     @GET("/api/movies/search")
     fun getBufferoos(

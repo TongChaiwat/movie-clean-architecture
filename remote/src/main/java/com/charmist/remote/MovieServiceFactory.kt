@@ -11,23 +11,23 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object BufferooServiceFactory {
+object MovieServiceFactory {
 
-    fun makeBuffeoorService(isDebug: Boolean): BufferooService {
+    fun makeBuffeoorService(isDebug: Boolean): MovieService {
         val okHttpClient = makeOkHttpClient(
             makeLoggingInterceptor(isDebug)
         )
         return makeBufferooService(okHttpClient, makeGson())
     }
 
-    private fun makeBufferooService(okHttpClient: OkHttpClient, gson: Gson): BufferooService {
+    private fun makeBufferooService(okHttpClient: OkHttpClient, gson: Gson): MovieService {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://scb-movies-api.herokuapp.com/")
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-        return retrofit.create(BufferooService::class.java)
+        return retrofit.create(MovieService::class.java)
     }
 
     private fun makeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {

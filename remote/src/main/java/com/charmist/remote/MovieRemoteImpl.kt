@@ -2,20 +2,19 @@ package com.charmist.remote
 
 import com.charmist.data.model.BufferooEntity
 import com.charmist.data.repository.BufferooRemote
-import com.charmist.remote.mapper.BufferooEntityMapper
+import com.charmist.remote.mapper.MovieEntityMapper
 import io.reactivex.Single
 import javax.inject.Inject
 
-class BufferooRemoteImpl @Inject constructor(
-    private val bufferooService: BufferooService,
-    private val entityMapper: BufferooEntityMapper
+class MovieRemoteImpl @Inject constructor(
+    private val movieService: MovieService,
+    private val entityMapper: MovieEntityMapper
 ) :
     BufferooRemote {
     override fun getBufferoos(): Single<List<BufferooEntity>> {
-        return bufferooService.getBufferoos("man",1)
+        return movieService.getBufferoos("man",1)
             .map {
                 var b = it.results
-
                 it.team.map { listItem ->
                     entityMapper.mapFromRemote(listItem)
                 }

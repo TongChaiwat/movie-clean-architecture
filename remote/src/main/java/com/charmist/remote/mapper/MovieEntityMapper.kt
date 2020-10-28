@@ -4,7 +4,7 @@ import com.charmist.data.model.BufferooEntity
 import com.charmist.remote.model.BufferooModel
 import javax.inject.Inject
 
-open class BufferooEntityMapper @Inject constructor() :
+open class MovieEntityMapper @Inject constructor() :
     EntityMapper<BufferooModel, BufferooEntity> {
 
     override fun mapFromRemote(type: BufferooModel): BufferooEntity {

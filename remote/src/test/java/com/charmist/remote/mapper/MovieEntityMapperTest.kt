@@ -8,19 +8,19 @@ import org.junit.runners.JUnit4
 import kotlin.test.assertEquals
 
 @RunWith(JUnit4::class)
-class BufferooEntityMapperTest {
+class MovieEntityMapperTest {
 
-    private lateinit var bufferooEntityMapper: BufferooEntityMapper
+    private lateinit var movieEntityMapper: MovieEntityMapper
 
     @Before
     fun setUp() {
-        bufferooEntityMapper = BufferooEntityMapper()
+        movieEntityMapper = MovieEntityMapper()
     }
 
     @Test
     fun mapFromRemoteMapsData() {
         val bufferooModel = BufferooFactory.makeBufferooModel()
-        val bufferooEntity = bufferooEntityMapper.mapFromRemote(bufferooModel)
+        val bufferooEntity = movieEntityMapper.mapFromRemote(bufferooModel)
 
         assertEquals(bufferooModel.name, bufferooEntity.name)
         assertEquals(bufferooModel.title, bufferooEntity.title)
