@@ -1,6 +1,6 @@
-package com.charmist.remote.model
+package com.charmist.presentation.model
 
-data class MovieDetailModel(
+data class MovieDetailView(
     val id: Int,
     val adult: Boolean,
     var backdrop_path: String,
