@@ -49,7 +49,7 @@ class BufferooRemoteImplTest {
     //</editor-fold>
 
     private fun stubBufferooServiceGetBufferoos(single: Single<BufferooService.BufferooResponse>) {
-        whenever(bufferooService.getBufferoos())
+        whenever(bufferooService.getBufferoos("man",1))
             .thenReturn(single)
     }
 }

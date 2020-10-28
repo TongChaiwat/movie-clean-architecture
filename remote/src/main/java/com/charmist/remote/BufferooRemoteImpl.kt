@@ -12,8 +12,10 @@ class BufferooRemoteImpl @Inject constructor(
 ) :
     BufferooRemote {
     override fun getBufferoos(): Single<List<BufferooEntity>> {
-        return bufferooService.getBufferoos()
+        return bufferooService.getBufferoos("man",1)
             .map {
+                var b = it.results
+
                 it.team.map { listItem ->
                     entityMapper.mapFromRemote(listItem)
                 }

@@ -3,6 +3,7 @@ package com.charmist.remote
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +22,7 @@ object BufferooServiceFactory {
 
     private fun makeBufferooService(okHttpClient: OkHttpClient, gson: Gson): BufferooService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://joe-birch-dsdb.squarespace.com/s/")
+            .baseUrl("http://scb-movies-api.herokuapp.com/")
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -31,6 +32,7 @@ object BufferooServiceFactory {
 
     private fun makeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .addInterceptor(httpLoggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
@@ -43,6 +45,14 @@ object BufferooServiceFactory {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create()
+    }
+
+    private val interceptor = Interceptor { chain ->
+        chain.proceed(
+            chain.request().newBuilder()
+                .addHeader("api-key", "2f70b177e4ba26509a63e4bd9e23bbdcb6634d60")
+                .build()
+        )
     }
 
     private fun makeLoggingInterceptor(isDebug: Boolean): HttpLoggingInterceptor {
