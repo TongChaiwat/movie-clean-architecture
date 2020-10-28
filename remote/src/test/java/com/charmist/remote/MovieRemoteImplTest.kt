@@ -49,7 +49,7 @@ class MovieRemoteImplTest {
     //</editor-fold>
 
     private fun stubBufferooServiceGetBufferoos(single: Single<MovieService.BufferooResponse>) {
-        whenever(movieService.getBufferoos("man",1))
+        whenever(movieService.getMovies("man",1))
             .thenReturn(single)
     }
 }

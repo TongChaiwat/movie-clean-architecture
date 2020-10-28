@@ -12,7 +12,7 @@ class MovieRemoteImpl @Inject constructor(
 ) :
     BufferooRemote {
     override fun getBufferoos(): Single<List<BufferooEntity>> {
-        return movieService.getBufferoos("man",1)
+        return movieService.getMovies("man",1)
             .map {
                 var b = it.results
                 it.team.map { listItem ->

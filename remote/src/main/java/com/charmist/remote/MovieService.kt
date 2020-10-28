@@ -9,12 +9,12 @@ import retrofit2.http.Query
 interface MovieService {
 
     @GET("/api/movies/search")
-    fun getBufferoos(
+    fun getMovies(
         @Query("query") limit: String,
         @Query("page") offset: Int
-    ): Single<BufferooResponse>
+    ): Single<MovieResponse>
 
-    class BufferooResponse {
+    class MovieResponse {
         lateinit var team: List<BufferooModel>
         lateinit var results: MutableList<MovieModel>
         var page: Int = 0
